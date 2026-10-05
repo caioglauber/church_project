@@ -13,7 +13,7 @@ import com.my_first_project.flecha.entites.Crianca;
 @RequestMapping(value = "/criancas")
 public class CriancaResource {
 
-	//metodo end point para acessar as criancas
+	//metodo end point para acessar as criancas e testar na web
 	@GetMapping
 	public ResponseEntity<Crianca> findAll(){
 		Crianca c = new Crianca(1l, "Ben", Instant.parse("2021-12-16T00:00:00Z"));
