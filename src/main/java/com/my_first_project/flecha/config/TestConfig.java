@@ -26,6 +26,8 @@ public class TestConfig implements CommandLineRunner {
 		
 		criancaRepository.saveAll(Arrays.asList(c1,c2));
 		
+		
+		
 	}
 	
 	
