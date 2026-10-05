@@ -2,25 +2,37 @@ package com.my_first_project.flecha.entites;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tb_crianca")
 public class Crianca implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
 	private Instant anoNascimento;
 	
-	private Responsavel responsavel;
+	
+	private Set<Responsavel> responsaveis = new HashSet<>();
 	
 	
 	public Crianca() {}
 
-	public Crianca(Long id, String nome, Instant anoNascimento, Responsavel responsavel) {
+	public Crianca(Long id, String nome, Instant anoNascimento) {
 		this.id = id;
 		this.nome = nome;
 		this.anoNascimento = anoNascimento;
-		this.responsavel = responsavel;
 	}
 
 
@@ -54,15 +66,9 @@ public class Crianca implements Serializable {
 	}
 
 
-	public Responsavel getResponsavel() {
-		return responsavel;
+	public Set<Responsavel> getResponsaveis() {
+		return responsaveis;
 	}
-
-
-	public void setResponsavel(Responsavel responsavel) {
-		this.responsavel = responsavel;
-	}
-
 
 	@Override
 	public int hashCode() {
@@ -93,7 +99,6 @@ public class Crianca implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Crianca [id=" + id + ", nome=" + nome + ", anoNascimento=" + anoNascimento + ", responsavel="
-				+ responsavel + "]";
+		return "Crianca [id=" + id + ", nome=" + nome + ", anoNascimento=" + anoNascimento + "]";
 	}
 }

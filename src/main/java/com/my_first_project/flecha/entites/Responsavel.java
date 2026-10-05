@@ -1,14 +1,28 @@
 package com.my_first_project.flecha.entites;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tb_responsavel")
 public class Responsavel implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
 	private String telefone;
+	
+	private Set<Crianca> criancas = new HashSet<>();
 	
 	public Responsavel() {}
 
@@ -41,6 +55,11 @@ public class Responsavel implements Serializable{
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+	
+	public Set<Crianca> getCriancas() {
+		return criancas;
+	}
+	
 
 	@Override
 	public int hashCode() {
@@ -71,6 +90,8 @@ public class Responsavel implements Serializable{
 	public String toString() {
 		return "Responsavel [id=" + id + ", nome=" + nome + ", telefone=" + telefone + "]";
 	}
+
+	
 	
 	
 }
