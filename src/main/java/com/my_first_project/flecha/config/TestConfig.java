@@ -25,7 +25,7 @@ public class TestConfig implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		
+		/*
 		Responsavel resp1 = new Responsavel(null, "Renatha Carvalho", "Caio Glauber", "83993161635");
 		Responsavel resp2 = new Responsavel(null, "Daiana", "Iggo nicolas", "83993161635");
 		Responsavel resp3 = new Responsavel(null, "Thalita Medeiros", "Vitor Hugo", "83993161635");
@@ -39,7 +39,7 @@ public class TestConfig implements CommandLineRunner {
 		
 		criancaRepository.saveAll(Arrays.asList(c1,c2,c3,c4));
 		
-		
+		*/
 		
 	}
 	

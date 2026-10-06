@@ -30,13 +30,18 @@ public class Crianca implements Serializable {
 	@JoinColumn(name = "resp_id")
 	private Responsavel resp;
 	
+	@ManyToOne
+	@JoinColumn(name = "sala_id")
+	private Sala sala;
+	
 	public Crianca() {}
 
-	public Crianca(Long id, String nome, Instant anoNascimento, Responsavel resp) {
+	public Crianca(Long id, String nome, Instant anoNascimento, Responsavel resp, Sala sala) {
 		this.id = id;
 		this.nome = nome;
 		this.anoNascimento = anoNascimento;
 		this.resp = resp;
+		this.sala = sala;
 	}
 
 	public Long getId() {
@@ -62,6 +67,16 @@ public class Crianca implements Serializable {
 
 	public void setAnoNascimento(Instant anoNascimento) {
 		this.anoNascimento = anoNascimento;
+	}
+	
+	
+
+	public Responsavel getResp() {
+		return resp;
+	}
+
+	public Sala getSala() {
+		return sala;
 	}
 
 	@Override
@@ -91,6 +106,8 @@ public class Crianca implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Crianca [id=" + id + ", nome=" + nome + ", anoNascimento=" + anoNascimento + ", resp=" + resp + "]";
+		return "Crianca [id=" + id + ", nome=" + nome + ", resp=" + resp + ", sala=" + sala + "]";
 	}
+
+	
 }
