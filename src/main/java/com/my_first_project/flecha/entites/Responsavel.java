@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,16 +20,19 @@ public class Responsavel implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nome;
+	private String nomeMae;
+	private String nomePai;
 	private String telefone;
 	
+	@OneToMany(mappedBy = "resp")
 	private Set<Crianca> criancas = new HashSet<>();
 	
 	public Responsavel() {}
 
-	public Responsavel(Long id, String nome, String telefone) {
+	public Responsavel(Long id, String nomeMae, String nomePai, String telefone) {
 		this.id = id;
-		this.nome = nome;
+		this.nomeMae = nomeMae;
+		this.nomePai = nomePai;
 		this.telefone = telefone;
 	}
 
@@ -39,15 +43,7 @@ public class Responsavel implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
+	
 	public String getTelefone() {
 		return telefone;
 	}
@@ -56,11 +52,26 @@ public class Responsavel implements Serializable{
 		this.telefone = telefone;
 	}
 	
+	public String getNomeMae() {
+		return nomeMae;
+	}
+
+	public void setNomeMae(String nomeMae) {
+		this.nomeMae = nomeMae;
+	}
+
+	public String getNomePai() {
+		return nomePai;
+	}
+
+	public void setNomePai(String nomePai) {
+		this.nomePai = nomePai;
+	}
+
 	public Set<Crianca> getCriancas() {
 		return criancas;
 	}
 	
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -85,13 +96,5 @@ public class Responsavel implements Serializable{
 			return false;
 		return true;
 	}
-
-	@Override
-	public String toString() {
-		return "Responsavel [id=" + id + ", nome=" + nome + ", telefone=" + telefone + "]";
-	}
-
-	
-	
 	
 }

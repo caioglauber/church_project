@@ -9,6 +9,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,18 +26,18 @@ public class Crianca implements Serializable {
 	private String nome;
 	private Instant anoNascimento;
 	
-	
-	private Set<Responsavel> responsaveis = new HashSet<>();
-	
+	@ManyToOne
+	@JoinColumn(name = "resp_id")
+	private Responsavel resp;
 	
 	public Crianca() {}
 
-	public Crianca(Long id, String nome, Instant anoNascimento) {
+	public Crianca(Long id, String nome, Instant anoNascimento, Responsavel resp) {
 		this.id = id;
 		this.nome = nome;
 		this.anoNascimento = anoNascimento;
+		this.resp = resp;
 	}
-
 
 	public Long getId() {
 		return id;
@@ -45,29 +48,20 @@ public class Crianca implements Serializable {
 		this.id = id;
 	}
 
-
 	public String getNome() {
 		return nome;
 	}
-
 
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-
 	public Instant getAnoNascimento() {
 		return anoNascimento;
 	}
 
-
 	public void setAnoNascimento(Instant anoNascimento) {
 		this.anoNascimento = anoNascimento;
-	}
-
-
-	public Set<Responsavel> getResponsaveis() {
-		return responsaveis;
 	}
 
 	@Override
@@ -77,7 +71,6 @@ public class Crianca implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -96,9 +89,8 @@ public class Crianca implements Serializable {
 		return true;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Crianca [id=" + id + ", nome=" + nome + ", anoNascimento=" + anoNascimento + "]";
+		return "Crianca [id=" + id + ", nome=" + nome + ", anoNascimento=" + anoNascimento + ", resp=" + resp + "]";
 	}
 }
