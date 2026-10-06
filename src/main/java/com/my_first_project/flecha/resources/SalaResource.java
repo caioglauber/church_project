@@ -9,35 +9,28 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.my_first_project.flecha.entites.Crianca;
+import com.my_first_project.flecha.entites.Sala;
 import com.my_first_project.flecha.services.CriancaService;
+import com.my_first_project.flecha.services.SalaService;
 
 @RestController
-@RequestMapping(value = "/criancas")
-public class CriancaResource {
+@RequestMapping(value = "/sala")
+public class SalaResource {
 
 	@Autowired
-	private CriancaService service;
-	
-	//metodo end point para acessar as criancas e testar na web
+	private SalaService service;
+		
+	//metodo end point para acessar as Salas e testar na web
 	@GetMapping
-	public ResponseEntity<List<Crianca>> findAll(){
-		List<Crianca> list = service.findAll();
+	public ResponseEntity<List<Sala>> findAll(){
+		List<Sala> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Crianca> findById(@PathVariable Long id){
-		Crianca obj = service.findById(id);
+	public ResponseEntity<Sala> findById(@PathVariable Long id){
+		Sala obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
-	}
-	
-	@GetMapping("/sala/{id}")
-	public ResponseEntity<List<Crianca>> findBySala(@PathVariable Long id) {
-
-	    List<Crianca> obj = service.findBySala(id);
-
-	    return ResponseEntity.ok().body(obj);
 	}
 	
 }

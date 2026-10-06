@@ -1,9 +1,13 @@
 package com.my_first_project.flecha.entites;
 
+import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.hibernate.annotations.Audited.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,14 +17,16 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 @Table(name = "tb_sala")
-public class Sala {
-
+public class Sala implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
 	private String tia;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "sala")
 	private Set<Crianca> criancas = new HashSet<>();
 	
@@ -32,6 +38,7 @@ public class Sala {
 		this.nome = nome;
 		this.tia = tia;
 	}
+	
 
 	public Long getId() {
 		return id;
