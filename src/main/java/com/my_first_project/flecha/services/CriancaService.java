@@ -1,11 +1,13 @@
 package com.my_first_project.flecha.services;
 
 import java.time.Year;
+
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import com.my_first_project.flecha.entites.Crianca;
 import com.my_first_project.flecha.entites.Sala;
@@ -30,5 +32,9 @@ public class CriancaService {
 	public List<Crianca> findBySala(Long salaId) {
 		return criancaRepository.findBySalaId(salaId);
 
+	}
+	
+	public Crianca insert(Crianca obj) {
+		return criancaRepository.save(obj);
 	}
 }

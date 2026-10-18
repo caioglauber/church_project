@@ -1,10 +1,12 @@
 package com.my_first_project.flecha.services;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import com.my_first_project.flecha.entites.Responsavel;
 import com.my_first_project.flecha.repositories.ResponsavelRepository;
@@ -22,6 +24,10 @@ public class ResponsavelService {
 	public Responsavel findById(Long id) {
 		Optional<Responsavel> obj = repository.findById(id);
 		return obj.get();
+	}
+	
+	public Responsavel insert(Responsavel obj) {
+		return repository.save(obj);
 	}
 
 }
