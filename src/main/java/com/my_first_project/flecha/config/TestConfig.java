@@ -31,7 +31,7 @@ public class TestConfig implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 	
-		
+		/*
 		Sala s1 = new Sala(null, "Genesis", "Julia");
 		Sala s2 = new Sala(null, "Isaque", "Amanda");
 		Sala s3 = new Sala(null, "Jaco", "Reh");
@@ -51,6 +51,8 @@ public class TestConfig implements CommandLineRunner {
 		Crianca c4 = new Crianca(null, "Joaquim", Instant.parse("1989-05-01T00:00:00Z"), resp3,s3);
 		
 		criancaRepository.saveAll(Arrays.asList(c1,c2,c3,c4));
+		
+		*/
 		
 	}
 	
