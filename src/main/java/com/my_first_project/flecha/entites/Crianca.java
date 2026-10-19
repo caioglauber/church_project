@@ -24,7 +24,7 @@ public class Crianca implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-	private Instant anoNascimento;
+	private Integer anoNascimento;
 	
 	@ManyToOne
 	@JoinColumn(name = "resp_id")
@@ -36,7 +36,7 @@ public class Crianca implements Serializable {
 	
 	public Crianca() {}
 
-	public Crianca(Long id, String nome, Instant anoNascimento, Responsavel resp, Sala sala) {
+	public Crianca(Long id, String nome, Integer anoNascimento, Responsavel resp, Sala sala) {
 		this.id = id;
 		this.nome = nome;
 		this.anoNascimento = anoNascimento;
@@ -61,11 +61,11 @@ public class Crianca implements Serializable {
 		this.nome = nome;
 	}
 
-	public Instant getAnoNascimento() {
+	public Integer getAnoNascimento() {
 		return anoNascimento;
 	}
 
-	public void setAnoNascimento(Instant anoNascimento) {
+	public void setAnoNascimento(Integer anoNascimento) {
 		this.anoNascimento = anoNascimento;
 	}
 	

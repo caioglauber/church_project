@@ -37,4 +37,8 @@ public class CriancaService {
 	public Crianca insert(Crianca obj) {
 		return criancaRepository.save(obj);
 	}
+	
+	public int idade(Integer anoNascimento) {
+	    return java.time.Year.now().getValue() - anoNascimento;
+	}
 }
