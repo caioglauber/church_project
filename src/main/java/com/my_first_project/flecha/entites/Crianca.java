@@ -74,6 +74,14 @@ public class Crianca implements Serializable {
 	public Responsavel getResp() {
 		return resp;
 	}
+	
+	public void setResp(Responsavel resp) {
+	    this.resp = resp;
+	}
+
+	public void setSala(Sala sala) {
+		this.sala = sala;
+	}
 
 	public Sala getSala() {
 		return sala;
