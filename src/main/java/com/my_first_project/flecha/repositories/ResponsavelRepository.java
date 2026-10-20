@@ -6,4 +6,10 @@ import com.my_first_project.flecha.entites.Responsavel;
 
 public interface ResponsavelRepository extends JpaRepository<Responsavel, Long> {
 
+	boolean existsByNomeMaeIgnoreCaseAndNomePaiIgnoreCaseAndTelefone(
+		    String nomeMae,
+		    String nomePai,
+		    String telefone
+		);
+	
 }
