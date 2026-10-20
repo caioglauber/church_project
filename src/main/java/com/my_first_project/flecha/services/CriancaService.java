@@ -1,18 +1,14 @@
 package com.my_first_project.flecha.services;
 
-import java.time.Year;
-
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import com.my_first_project.flecha.entites.Crianca;
-import com.my_first_project.flecha.entites.Sala;
 import com.my_first_project.flecha.repositories.CriancaRepository;
-import com.my_first_project.flecha.repositories.SalaRepository;
+import com.my_first_project.flecha.services.exceptions.RecursoDuplicadoException;
 
 @Service
 public class CriancaService {
@@ -44,7 +40,7 @@ public class CriancaService {
 	            );
 
 	    if (existe) {
-	        throw new IllegalArgumentException(
+	        throw new RecursoDuplicadoException(
 	                "Essa criança já está cadastrada para esse responsável."
 	        );
 	    }
