@@ -10,4 +10,10 @@ public interface CriancaRepository extends JpaRepository<Crianca, Long> {
 
 	List<Crianca> findBySalaId(Long salaId);
 
+	boolean existsByNomeIgnoreCaseAndAnoNascimentoAndRespId(
+            String nome,
+            Integer anoNascimento,
+            Long respId
+    );
+	
 }

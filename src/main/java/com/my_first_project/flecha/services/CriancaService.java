@@ -35,10 +35,25 @@ public class CriancaService {
 	}
 	
 	public Crianca insert(Crianca obj) {
+		
+		boolean existe = criancaRepository
+	            .existsByNomeIgnoreCaseAndAnoNascimentoAndRespId(
+	                    obj.getNome(),
+	                    obj.getAnoNascimento(),
+	                    obj.getResp().getId()
+	            );
+
+	    if (existe) {
+	        throw new IllegalArgumentException(
+	                "Essa criança já está cadastrada para esse responsável."
+	        );
+	    }
 		return criancaRepository.save(obj);
 	}
 	
 	public int idade(Integer anoNascimento) {
 	    return java.time.Year.now().getValue() - anoNascimento;
 	}
+	
+	
 }
